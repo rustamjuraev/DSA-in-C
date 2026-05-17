@@ -27,8 +27,35 @@ int *bubble_sort(int array[], int n)
         }
     }
     return array;
+}
 
+void selection_sort(int array[], int n)
+{
+    int *current, *current_min;
+    current = array;
+    current_min = current;
+    for(int i=0, i<n; i++)
+    {
+        current = current + i;
+        for(int x=1; x<n-1; x++)
+        {
+            
+            else
+            {
+                if(*current_min > *(current+x))
+                {
+                    current_min = current + x;
+                }   
+            }
 
+        }
+
+        if(current != current_min)
+        {
+            // in this place i need to swap the current with min 
+        }
+
+    }
 }
 
 void display(int *ptr)
