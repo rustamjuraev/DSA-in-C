@@ -29,39 +29,44 @@ int *bubble_sort(int array[], int n)
     return array;
 }
 
+
 void selection_sort(int array[], int n)
 {
-    int *current, *current_min;
-    current = array;
-    current_min = current;
-    for(int i=0, i<n; i++)
+    // i need to write code for selection sort here
+    if (n==0)
     {
-        current = current + i;
-        for(int x=1; x<n-1; x++)
+        printf("the array is empty, nothing to sort\n");
+        return;
+    }
+
+    int *current, *min;
+    
+    for (int i=0; i<n-1; i++)
+    {
+        current = min = array + i;
+        for(int z=i; z<n-1; z++)
         {
-            
-            else
+            current++;
+            if(*min > *current)
             {
-                if(*current_min > *(current+x))
-                {
-                    current_min = current + x;
-                }   
+                min = current;
             }
-
         }
-
-        if(current != current_min)
+        if (*(array + i) > *min)
         {
-            // in this place i need to swap the current with min 
+            int temp = *(array+i);
+            *(array+i) = *min;
+            *min = temp;
         }
 
     }
 }
 
-void display(int *ptr)
+// insertion sort, merge sort, quick sort
+void display(int *ptr, int n)
 {
     printf("Started printing the sorted array \n");
-    for(int i=0; i<10; i++)
+    for(int i=0; i<n; i++)
     {
         printf("%d --> ",*(ptr+i));
     }
@@ -70,8 +75,12 @@ void display(int *ptr)
 int main(void)
 {
     int arr1[] = {42, 7, 19, 73, 4, 88, 15, 63, 29, 50};
+    int arr2[] = {5, 3, 8, 1, 9, 2};
     int *ptr = arr1;
     ptr = bubble_sort(arr1,10);
-    display(ptr);
+    display(ptr,10);
+    selection_sort(arr2,6);
+    display(arr2,6);
+
     return 0;
 }
